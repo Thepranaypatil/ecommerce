@@ -2,23 +2,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// ================================
-// Backend base URL
-// ================================
+
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
-// ================================
-// Initial state
-// ================================
+
 const initialState = {
   isAuthenticated: false,
   isLoading: true,
   user: null,
 };
 
-// ================================
-// Async thunks
-// ================================
+
 export const registerUser = createAsyncThunk(
   "/auth/register",
   async (formData) => {
