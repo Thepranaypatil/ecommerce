@@ -2,22 +2,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// ================================
-// Backend base URL
-// ================================
+
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
-// ================================
-// Initial state
-// ================================
+
 const initialState = {
   isLoading: false,
   addressList: [],
 };
 
-// ================================
-// Async thunks
-// ================================
+
 export const addNewAddress = createAsyncThunk(
   "/addresses/addNewAddress",
   async (formData) => {
