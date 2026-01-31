@@ -2,22 +2,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// ================================
-// Backend base URL
-// ================================
+
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
-// ================================
-// Initial state
-// ================================
+
 const initialState = {
   isLoading: false,
   featureImageList: [],
 };
 
-// ================================
-// Async thunks
-// ================================
+
 export const getFeatureImages = createAsyncThunk(
   "/common/getFeatureImages",
   async () => {
@@ -36,9 +30,7 @@ export const addFeatureImage = createAsyncThunk(
   }
 );
 
-// ================================
-// Slice
-// ================================
+
 const commonSlice = createSlice({
   name: "commonSlice",
   initialState,
