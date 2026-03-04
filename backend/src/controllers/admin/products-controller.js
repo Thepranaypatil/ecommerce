@@ -3,7 +3,9 @@ import Product from "../../models/Product.js";
 
 export const handleImageUpload = async (req, res) => {
   try {
+    //Cloudinary accepts base64 string
     const b64 = Buffer.from(req.file.buffer).toString("base64");
+    //url that cloudinary understand
     const url = "data:" + req.file.mimetype + ";base64," + b64;
     const result = await imageUploadUtil(url);
 

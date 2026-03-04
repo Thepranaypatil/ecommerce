@@ -10,6 +10,7 @@ cloudinary.config({
 });
 const storage = multer.memoryStorage();
 
+//take a image and give it to cloudinary and retrun result(url) what can from it.
 export async function imageUploadUtil(file) {
   const result = await cloudinary.uploader.upload(file, {
     resource_type: "auto",

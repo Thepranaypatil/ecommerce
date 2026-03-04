@@ -95,7 +95,7 @@ export const loginUser = async (req, res) => {
         username: checkUser.username,
       },
       process.env.JWT_SECRET,
-      { expiresIn: "60m" } // 1 hour validity
+      { expiresIn: "60m" }, // 1 hour validity
     );
 
     // Step 4: Store token in cookie

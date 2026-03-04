@@ -16,10 +16,14 @@ import shopSearchRouter from "./src/routes/shop/search-routes.js";
 import shopReviewRouter from "./src/routes/shop/review-routes.js";
 
 import commonFeatureRouter from "./src/routes/common/feature-routes.js";
+
+import path from "path";
+
 dotenv.config();
 const app = express();
 const MONGO_URI = process.env.MONGO_URI;
 const port = process.env.PORT || 3000;
+const __dirname = path.resolve();
 
 app.use(
   cors({
@@ -30,11 +34,11 @@ app.use(
       "Content-Type",
       "Authorization",
       "Cache-Control",
-      "Expries",
+      "Expires",
       "Pragma",
     ],
     credentials: true,
-  })
+  }),
 );
 app.use(cookieParser());
 app.use(express.json());
@@ -50,8 +54,14 @@ app.use("/api/shop/search", shopSearchRouter);
 app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
-app.get("/", (req, res) => {
+
+app.use(express.static(path.join(__dirname, "frontend/dist")));
+
+/* app.get("/", (req, res) => {
   res.send("Hello World!");
+}); */
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "frontend/dist/index.html"));
 });
 
 mongoose
