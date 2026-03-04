@@ -55,14 +55,14 @@ app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
 
-//app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-app.get("/", (req, res) => {
+/*app.get("/", (req, res) => {
   res.send("Hello World!");
-});
-/*app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 });*/
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
 
 mongoose
   .connect(MONGO_URI)
