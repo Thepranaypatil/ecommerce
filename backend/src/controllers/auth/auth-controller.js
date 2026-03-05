@@ -102,8 +102,8 @@ export const loginUser = async (req, res) => {
     res
       .cookie("token", token, {
         httpOnly: true, // prevents frontend JS from accessing the cookie
-        secure: process.env.NODE_ENV === "production", // HTTPS in production
-        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // required for frontend-hosted apps
+        secure: true, // HTTPS in production
+        sameSite: "none", // required for frontend-hosted apps
       })
       .json({
         success: true,
