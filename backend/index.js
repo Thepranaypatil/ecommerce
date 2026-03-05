@@ -27,7 +27,11 @@ const __dirname = path.resolve();
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+  /* origin: process.env.CLIENT_URL || "http://localhost:5173",*/
+     origin: [
+      "http://localhost:5173",
+      "https://ecommerce-ekwp.vercel.app",
+    ],
 
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [
